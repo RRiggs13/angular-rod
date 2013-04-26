@@ -39,7 +39,7 @@
   display: block;
   float: left;
   margin: 0 auto 0px;
-  min-width: 1024px;
+  width: 100%;
   position: relative;
   z-index: 9;
   height: 50px;
@@ -50,16 +50,19 @@ ul.nav>li>a:focus {
   background-color: rgb(0, 41, 91);
 }
 
-.nav  li a {
+.nav li a {
   font-family: Philosopher, sans-serif;
   color: white;
+}
+
+.nav li#login {
+  float: right;
 }
 
 #branding {
   height: 105px;
   background: url('../img/swooshy-repeat2.png') repeat top left;
   z-index: 8;
-  min-width: 1024px;
 }
 
 #branding {
