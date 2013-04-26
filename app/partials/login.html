@@ -1,12 +1,12 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<!-- <div class="modal-header">
   <h3>Modal header</h3>
-</div>
+</div> -->
 <div class="modal-body">
+  <button type="button" ng-click="close()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
   <input type="text" name="username" class="span4" placeholder="Username" ng-model="username">
   <input type="password" name="password" class="span4" placeholder="Password" ng-model="password">
 </div>
 <div class="modal-footer">
-  <button ng-click="close('password: ' + password)" class="btn btn-primary" ng-disabled="!username || !password || password.length < 3">Login</button>
-  <a ng-click="close('username: ' + username)"class="btn">Cancel</a>
+  <button ng-click="close('Password: ' + password)" class="btn btn-primary" ng-disabled="!username || !password || password.length < 3">Login</button>
+  <a ng-click="close('Username: ' + username)" class="btn">Cancel</a>
 </div>

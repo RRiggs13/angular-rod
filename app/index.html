@@ -7,10 +7,16 @@
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
-  <ul class="menu">
+  <header id="branding" role="banner">
+      <hgroup>
+        <h1 id="site-title"><span><a href="http://www.theradoc.com/" title="TheraDoc" rel="home">TheraDoc</a></span></h1>
+        <h2 id="hospira-logo"><span><a href="http://www.hospira.com" title="Hospira" target="_blank">Hospira</a></span></h2>
+      </hgroup>
+  </header>
+  <ul class="nav nav-pills">
     <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-    <li ng-controller="LoginCtrl"><button ng-click="doLogin()">login</button></li>
+    <li><a href="#/questionaire">Questionaire</a></li>
+    <li ng-controller="LoginCtrl"><a ng-click="doLogin()">login</a></li>
   </ul>
 
   <div ng-view></div>
