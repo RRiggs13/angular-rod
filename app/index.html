@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
-<body>
+<body ng-controller="RootCtrl">
   <header id="branding" role="banner">
       <hgroup>
         <h1 id="site-title"><span><a href="http://www.theradoc.com/" title="TheraDoc" rel="home">TheraDoc</a></span></h1>
@@ -16,7 +16,7 @@
   <ul class="nav nav-pills">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/questionaire">Questionaire</a></li>
-    <li id="login" ng-controller="LoginCtrl"><a ng-click="doLogin()">login</a></li>
+    <li id="login"  ng-controller="LoginCtrl"><a ng-show="true" ng-click="doLogin()">Login {{$rootScope}}</a></li>
   </ul>
 
   <div ng-view></div>
