@@ -1,12 +1,15 @@
 <!-- <div class="modal-header">
   <h3>Modal header</h3>
 </div> -->
-<div class="modal-body">
-  <button type="button" ng-click="close()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <input type="text" name="username" class="span4" placeholder="Username" ng-model="username">
-  <input type="password" name="password" class="span4" placeholder="Password" ng-model="password">
-</div>
-<div class="modal-footer">
-  <button ng-click="close('Password: ' + password)" class="btn btn-primary" ng-disabled="!username || !password || password.length < 3">Login</button>
-  <a ng-click="close('Username: ' + username)" class="btn">Cancel</a>
-</div>
+<!-- Just adding the "form" wrapper connected the <enter> and escape keys -->
+<form>
+  <div class="modal-body">
+    <button type="button" ng-click="close()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <input type="text" name="username" class="span4" placeholder="Username" ng-model="username">
+    <input type="password" name="password" class="span4" placeholder="Password" ng-model="password">
+  </div>
+  <div class="my-footer">
+    <button ng-click="close(true, username)" class="btn btn-primary" ng-disabled="!username || !password || password.length < 3">Login</button>
+    <a ng-click="close(false, password)" class="btn">Cancel</a>
+  </div>
+</form>

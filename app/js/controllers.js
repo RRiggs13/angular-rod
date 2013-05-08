@@ -6,18 +6,16 @@ angular.module('myApp.controllers', []).
 	controller('MyCtrl1', [function() {
 
 	}])
-	.controller('Questionaire', ['$scope', '$rootScope', function($scope, $rootScope) {
+	.controller('Questionaire', ['$scope', function($scope) {
 
 		$scope.labelClick = function(){
-debugger;
 			alert('username: ' + $scope.auth);
 		};
 	}])
-	.controller('RootCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
-debugger;
-		$scope.auth = 'Fred';
+	.controller('RootCtrl', ['$scope', function ($scope) {
+		$scope.auth = '';
 	}])
-	.controller('LoginCtrl', ['$scope', '$dialog', '$rootScope',  function ($scope, $dialog, $rootScope) {
+	.controller('LoginCtrl', ['$scope', '$dialog',  function ($scope, $dialog) {
 
 		$scope.opts = {
 			backdrop: true,
@@ -32,19 +30,19 @@ debugger;
 		$scope.doLogin = function(){
 			var d = $dialog.dialog($scope.opts);
 			d.open().then(function(result){
-				if(result)
-				{
-					$rootScope.auth = result;
-					alert('dialog closed with result: ' + result);
-				}
+				$scope.auth = result ? result : '';
 			});
+		};
+
+		$scope.doLogout = function(){
+			$scope.auth = '';
 		};
 	}]);
 
 // the dialog is injected in the specified controller
-function LoginController($scope, $rootScope, dialog){
-	$scope.close = function(result){
-		dialog.close(result);
+function LoginController($scope, dialog){
+	$scope.close = function(ok, result){
+		dialog.close(ok ? result : null);
 	};
 
 }
