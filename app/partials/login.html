@@ -9,7 +9,7 @@
     <input type="password" name="password" class="span4" placeholder="Password" ng-model="password">
   </div>
   <div class="my-footer">
-    <button ng-click="close(true, username)" class="btn btn-primary" ng-disabled="!username || !password || password.length < 3">Login</button>
-    <a ng-click="close(false, password)" class="btn">Cancel</a>
+    <button ng-click="close(true)" class="btn btn-primary" ng-disabled="!username || !password || password.length < 3">Login</button>
+    <a ng-click="close(false)" class="btn">Cancel</a>
   </div>
 </form>

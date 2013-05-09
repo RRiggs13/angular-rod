@@ -29,7 +29,7 @@ angular.module('myApp.controllers', []).
 
 		$scope.doLogin = function(){
 			var d = $dialog.dialog($scope.opts);
-			d.open().then(function(result){
+			d.open().then(function(result) {
 				$scope.auth = result ? result : '';
 			});
 		};
@@ -41,8 +41,14 @@ angular.module('myApp.controllers', []).
 
 // the dialog is injected in the specified controller
 function LoginController($scope, dialog){
-	$scope.close = function(ok, result){
-		dialog.close(ok ? result : null);
+	$scope.close = function(ok){
+		var result = '';
+		if (ok &&
+				($scope.username.toLowerCase().indexOf('f') !== -1) &&
+				($scope.password.toLowerCase().indexOf('f') !== -1)) {
+			result = $scope.username;
+		}
+		dialog.close(result);
 	};
 
 }
