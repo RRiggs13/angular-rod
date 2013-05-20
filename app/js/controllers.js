@@ -1,7 +1,8 @@
 'use strict';
 
 /* Controllers */
-
+/* This creates the controllers as properties on the "myApp" object (namespace) ???
+*/
 angular.module('myApp.controllers', []).
 	controller('MyCtrl1', [function() {
 
@@ -15,7 +16,7 @@ angular.module('myApp.controllers', []).
 	.controller('RootCtrl', ['$scope', function ($scope) {
 		$scope.auth = '';
 	}])
-	.controller('LoginCtrl', ['$scope', '$dialog',  function ($scope, $dialog) {
+	.controller('LoginCtrl', ['$scope', '$dialog', 'identity', function ($scope, $dialog, identity) {
 
 		$scope.opts = {
 			backdrop: true,
@@ -40,15 +41,12 @@ angular.module('myApp.controllers', []).
 	}]);
 
 // the dialog is injected in the specified controller
-function LoginController($scope, dialog){
+function LoginController($scope, dialog, identity){
 	$scope.close = function(ok){
-		var result = '';
-		if (ok &&
-				($scope.username.toLowerCase().indexOf('f') !== -1) &&
-				($scope.password.toLowerCase().indexOf('f') !== -1)) {
-			result = $scope.username;
-		}
-		dialog.close(result);
+		if (ok && identity($scope.username, $scope.password))
+			dialog.close($scope.username);
+		else
+			dialog.close('');
 	};
 
 }
