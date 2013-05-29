@@ -25,7 +25,7 @@ angular.module('myApp.controllers', []).
 			backdropFade: true,
 			dialogFade: true,
 			templateUrl: 'partials/login.html',
-			controller: 'LoginController'
+			controller: 'LoginDialogCtrl'
 		};
 
 		$scope.doLogin = function(){
@@ -38,15 +38,15 @@ angular.module('myApp.controllers', []).
 		$scope.doLogout = function(){
 			$scope.auth = '';
 		};
-	}]);
+	}])
+	.controller('LoginDialogCtrl', ['$scope', 'dialog',  'authenticate', function ($scope, dialog, auth) {
+		// the dialog is injected in the specified controller (note using 'dialog' w/o '$'!!!)
+			$scope.close = function(ok){
+				var result = '';
+				if (ok && auth.validate($scope.username, $scope.password)) {
+					result = $scope.username;
+				}
+				dialog.close(result);
+			};
 
-// the dialog is injected in the specified controller
-function LoginController($scope, dialog, identity){
-	$scope.close = function(ok){
-		if (ok && identity($scope.username, $scope.password))
-			dialog.close($scope.username);
-		else
-			dialog.close('');
-	};
-
-}
+		}]);

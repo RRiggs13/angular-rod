@@ -6,9 +6,14 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
-  value('version', '0.1').factory('identity', function($window) {
-    return function(username, password) {
-        $window.alert("identity check: " + username + ", " + password);
-  			return true;
-    };
-  });
+  value('version', '0.1').
+  factory('authenticate', function() {
+  	return {
+  		validate: function (username, password) {
+			var ok = ((username.toLowerCase().indexOf('f') !== -1) &&
+				      (password.toLowerCase().indexOf('f') !== -1));
+  			return ok;
+  			
+  		}
+  	}
+});
